@@ -1,20 +1,24 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
 .search-form {
-  font-family: monospace;
+  position: fixed;
+  width: 100%;
   font-size: 16px;
   font-weight: 700;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff7db;
+  background-color: #777777;
   padding: 20px 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .search-input {
   padding: 10px;
   margin-right: 10px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 5px;
   outline: none;
 }
@@ -23,7 +27,7 @@
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #ffc400;
+  background-color: #ffaa00d5;
   color: #fff;
   cursor: pointer;
   outline: none;
@@ -31,6 +35,57 @@
 
   &:hover,
   &:focus {
-    background-color: #ff0000;
+    background-color: #66fe00b4;
   }
+}
+
+.load-more {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffaa00d5;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s;
+
+  &:hover,
+  &:focus {
+    background-color: #fe3300d6;
+  }
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.gallery {
+  padding: 110px 30px 30px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: baseline;
+}
+
+.photo-card {
+  width: calc((100% - 60px) / 4);
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  font-size: calc(4vw / 4);
+}
+
+.info-item {
+  color: #777777;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
