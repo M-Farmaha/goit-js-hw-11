@@ -1,22 +1,72 @@
 import axios from 'axios';
+import Notiflix from 'notiflix';
 
 const searchFormEl = document.querySelector('.search-form');
 const searchInputEl = document.querySelector('.search-input');
 const searchBtnEl = document.querySelector('.search-btn');
+const loadMoreBtnEl = document.querySelector('.load-more');
 const galleryEl = document.querySelector('.gallery');
 
+const renderPicturesPerRequest = 40;
+let paginationCounter = 1;
+
 searchFormEl.addEventListener('submit', handleFormSubmit);
+loadMoreBtnEl.addEventListener('click', handleloadMoreBtnClick);
+searchInputEl.addEventListener('input', () => {
+  if (!searchInputEl.value) {
+    searchBtnEl.setAttribute('disabled', 'true');
+  } else {
+    searchBtnEl.removeAttribute('disabled');
+  }
+});
 
 function handleFormSubmit(e) {
   e.preventDefault();
+  const query = searchInputEl.value;
+
+  paginationCounter = 1;
+
+  getRequest(query)
+    .then(res => {
+      if (!res.data.total) {
+        Notiflix.Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.'
+        );
+      } else {
+        Notiflix.Notify.success(
+          `Hooray! We found ${res.data.totalHits} images.`
+        );
+      }
+
+      if (paginationCounter * renderPicturesPerRequest >= res.data.totalHits) {
+        loadMoreBtnEl.classList.add('is-hidden');
+      } else {
+        loadMoreBtnEl.classList.remove('is-hidden');
+      }
+      return res.data.hits;
+    })
+    .then(createPictureMarkup)
+    .then(addPictureMarkup)
+    .catch(err => console.warn(err));
+}
+
+function handleloadMoreBtnClick() {
+  paginationCounter += 1;
 
   const query = searchInputEl.value;
 
   getRequest(query)
-    .then(res => res.data.hits)
+    .then(res => {
+      if (paginationCounter * renderPicturesPerRequest >= res.data.totalHits) {
+        loadMoreBtnEl.classList.add('is-hidden');
+        Notiflix.Notify.info(
+          "We're sorry, but you've reached the end of search results."
+        );
+      }
+      return res.data.hits;
+    })
     .then(createPictureMarkup)
-    .then(addPictureMarkup)
-    .then(console.log)
+    .then(loadMorePictureMarkup)
     .catch(err => console.warn(err));
 }
 
@@ -28,8 +78,8 @@ function getRequest(query) {
     image_type: 'photo',
     orientation: 'horizontal',
     safesearch: 'true',
-    page: 1,
-    per_page: 8,
+    page: paginationCounter,
+    per_page: renderPicturesPerRequest,
   };
 
   return axios.get(BASE_URL, { params });
@@ -73,4 +123,8 @@ function createPictureMarkup(elements) {
 
 function addPictureMarkup(markup) {
   galleryEl.innerHTML = markup;
+}
+
+function loadMorePictureMarkup(markup) {
+  galleryEl.insertAdjacentHTML('beforeend', markup);
 }
