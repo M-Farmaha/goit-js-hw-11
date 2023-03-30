@@ -4,34 +4,33 @@
   font-family: monospace;
   font-size: 16px;
   font-weight: 700;
-  display: flex; /* Розміщення елементів в одному рядку */
-  justify-content: center; /* Вирівнювання по центру головної осі */
-  align-items: center; /* Вирівнювання по вертикалі */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #fff7db;
   padding: 20px 10px;
 }
 
 .search-input {
-  padding: 10px; /* Відступи від текстового поля до обрамлення */
-  margin-right: 10px; /* Відступ від кнопки по правій стороні */
-  border: 1px solid #ccc; /* Обрамлення текстового поля */
-  border-radius: 5px; /* Закруглення кутиків текстового поля */
-  font-size: 16px; /* Розмір тексту */
-  outline: none; /* Зняття стандартного стилю при фокусуванні */
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
 }
 
-.submit-btn {
-  padding: 10px 20px; /* Відступи від кнопки до тексту */
-  border: none; /* Видалення обрамлення кнопки */
-  border-radius: 5px; /* Закруглення кутиків кнопки */
-  font-size: 16px; /* Розмір тексту */
-  background-color: #ffc400; /* Колір фону кнопки */
-  color: #fff; /* Колір тексту кнопки */
-  cursor: pointer; /* Курсор "рука" при наведенні на кнопку */
-  transition: all 0.3s; /* Анімація зміни стилів при наведенні на кнопку */
+.search-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffc400;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s;
 
   &:hover,
   &:focus {
-    background-color: #ff0000; /* Колір фону кнопки при наведенні на неї */
+    background-color: #ff0000;
   }
 }
