@@ -89,6 +89,9 @@ function handleloadMoreBtnClick() {
       loadMorePictureMarkup(markup);
       smoothScroll();
       lightbox.refresh();
+      lightbox.on('show.simplelightbox', function () {
+        document.body.classList.add('hidden-scroll');
+      });
     })
     .catch(err => console.warn(err));
 }
