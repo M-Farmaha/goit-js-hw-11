@@ -1,5 +1,6 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
-@import '~node_modules/simplelightbox/dist/simple-lightbox.css';
+// @import '~node_modules/simplelightbox/dist/simple-lightbox.css';
+@import 'node_modules/simplelightbox/src/simple-lightbox';
 
 body {
   overflow: auto;
@@ -10,6 +11,10 @@ body {
     width: 0;
     height: 0;
   }
+}
+
+.hidden-scroll {
+  overflow: hidden;
 }
 
 .search-form {
