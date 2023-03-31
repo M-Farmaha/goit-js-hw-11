@@ -1,29 +1,15 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
-
-body {
-  overflow: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-}
-
 .search-form {
   position: fixed;
   width: 100%;
   font-size: 16px;
   font-weight: 700;
-
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(41, 54, 67, 0.866);
+  background-color: #777777;
   padding: 20px 10px;
-  box-shadow: rgba(87, 93, 50, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .search-input {
@@ -38,22 +24,19 @@ body {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #ffaa00d5;
+  background-color: rgba(255, 170, 0, 0.8352941176);
   color: #fff;
   cursor: pointer;
   outline: none;
   transition: all 0.3s;
-
-  &:hover,
-  &:focus {
-    background-color: #66fe00b4;
-  }
-
-  &[disabled] {
-    background-color: #b7b7b7d5;
-    color: #fff;
-    cursor: auto;
-  }
+}
+.search-btn:hover, .search-btn:focus {
+  background-color: rgba(102, 254, 0, 0.7058823529);
+}
+.search-btn[disabled] {
+  background-color: rgba(183, 183, 183, 0.8352941176);
+  color: #fff;
+  cursor: auto;
 }
 
 .load-more {
@@ -61,30 +44,25 @@ body {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 50px;
-
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #ffaa00d5;
+  background-color: rgba(255, 170, 0, 0.8352941176);
   color: #fff;
   cursor: pointer;
   outline: none;
   transition: all 0.3s;
-
-  &:hover,
-  &:focus {
-    background-color: #fe3300d6;
-  }
-
-  &.is-hidden {
-    display: none;
-  }
+}
+.load-more:hover, .load-more:focus {
+  background-color: rgba(254, 51, 0, 0.8392156863);
+}
+.load-more.is-hidden {
+  display: none;
 }
 
 img {
   width: 100%;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  border-radius: 10px;
 }
 
 .gallery {
@@ -102,7 +80,7 @@ img {
 .info {
   display: flex;
   justify-content: space-between;
-  font-size: calc(4vw / 4);
+  font-size: 1vw;
 }
 
 .info-item {
@@ -111,4 +89,4 @@ img {
   flex-direction: column;
   align-items: center;
   gap: 5px;
-}
+}/*# sourceMappingURL=index.css.map */

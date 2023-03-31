@@ -1,5 +1,15 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/src/simple-lightbox.scss';
+
+var lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 100,
+  scrollZoom: false,
+  close: false,
+  overlayOpacity: 0.666,
+});
 
 const searchFormEl = document.querySelector('.search-form');
 const searchInputEl = document.querySelector('.search-input');
@@ -46,7 +56,11 @@ function handleFormSubmit(e) {
       return res.data.hits;
     })
     .then(createPictureMarkup)
-    .then(addPictureMarkup)
+    .then(markup => {
+      addPictureMarkup(markup);
+      smoothScroll();
+      lightbox.refresh();
+    })
     .catch(err => console.warn(err));
 }
 
@@ -66,7 +80,11 @@ function handleloadMoreBtnClick() {
       return res.data.hits;
     })
     .then(createPictureMarkup)
-    .then(loadMorePictureMarkup)
+    .then(markup => {
+      loadMorePictureMarkup(markup);
+      smoothScroll();
+      lightbox.refresh();
+    })
     .catch(err => console.warn(err));
 }
 
@@ -97,7 +115,9 @@ function createPictureMarkup(elements) {
         comments,
         downloads,
       }) => `<div class="photo-card">
+  <a href="${largeImageURL}">
   <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+  </a>
   <div class="info">
     <p class="info-item">
       <b>Likes</b>
@@ -127,4 +147,15 @@ function addPictureMarkup(markup) {
 
 function loadMorePictureMarkup(markup) {
   galleryEl.insertAdjacentHTML('beforeend', markup);
+}
+
+function smoothScroll() {
+  const { height: cardHeight } = document
+    .querySelector('.gallery')
+    .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
 }
