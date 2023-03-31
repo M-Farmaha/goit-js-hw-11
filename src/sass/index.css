@@ -1,4 +1,18 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+body {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.hidden-scroll {
+  overflow: hidden;
+}
+
 .search-form {
   position: fixed;
   width: 100%;
@@ -7,9 +21,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #777777;
+  background-color: rgba(41, 54, 67, 0.866);
   padding: 20px 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  box-shadow: rgba(87, 93, 50, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .search-input {
@@ -62,7 +76,8 @@
 
 img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
 
 .gallery {
