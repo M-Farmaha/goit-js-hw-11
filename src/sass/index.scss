@@ -93,7 +93,7 @@ img {
 }
 
 .gallery {
-  padding: 110px 30px 30px 30px;
+  padding: 100px 20px 20px 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -102,12 +102,20 @@ img {
 
 .photo-card {
   width: calc((100% - 60px) / 4);
+  @media screen and (max-width: 760px) {
+    width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .info {
   display: flex;
-  justify-content: space-between;
-  font-size: calc(4vw / 4);
+  justify-content: space-around;
+  font-size: 1vw;
+  @media screen and (max-width: 760px) {
+    font-size: 3vw;
+  }
 }
 
 .info-item {

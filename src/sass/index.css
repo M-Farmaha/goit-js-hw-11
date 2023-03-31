@@ -51,6 +51,9 @@ body.hidden-scroll {
   color: #bfbfbf;
   font-size: 3rem;
 }
+.sl-wrapper .sl-close:focus {
+  outline: none;
+}
 .sl-wrapper .sl-counter {
   display: none;
   position: fixed;
@@ -97,6 +100,9 @@ body.hidden-scroll {
 .sl-wrapper .sl-navigation button.sl-prev {
   left: 5px;
   font-size: 2rem;
+}
+.sl-wrapper .sl-navigation button:focus {
+  outline: none;
 }
 @media (min-width: 35.5em) {
   .sl-wrapper .sl-navigation button {
@@ -166,7 +172,7 @@ body.hidden-scroll {
 }
 .sl-wrapper .sl-image .sl-caption {
   display: none;
-  padding: 15px;
+  padding: 9px;
   color: #ffffff;
   background: rgba(41, 54, 67, 0.666);
   font-size: 1rem;
@@ -304,7 +310,7 @@ img {
 }
 
 .gallery {
-  padding: 110px 30px 30px 30px;
+  padding: 100px 20px 20px 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -314,11 +320,23 @@ img {
 .photo-card {
   width: calc((100% - 60px) / 4);
 }
+@media screen and (max-width: 760px) {
+  .photo-card {
+    width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 .info {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 1vw;
+}
+@media screen and (max-width: 760px) {
+  .info {
+    font-size: 3vw;
+  }
 }
 
 .info-item {
