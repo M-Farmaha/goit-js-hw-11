@@ -4,7 +4,7 @@
   "description": "",
   "homepage": "https://M-Farmaha.github.io/goit-js-hw-11",
   "scripts": {
-    "start": "parcel src/*.html",
+    "start": "parcel src/*.html -p 5555",
     "build": "parcel build src/*.html --public-url /goit-js-hw-11/"
   },
   "repository": {
